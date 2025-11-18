@@ -5,11 +5,12 @@ Feature: EnrollmentTest
     When I click Enroll Now on Home page
     And I navigate to Enroll page
 
-  @smoke
+ @smoke 
   Scenario: Successful enrollment with valid data
-    Then I verify the page title is "Sign Up- Agile1Tech page"
+    Then I verify the page title is "Sign Up- Agile1Tech"
     And the Course Enrollment Form is displayed
-
+    
+@smoke
   Scenario: Enrollment form submission
     Given I am on Enroll page
     When I enter First Name

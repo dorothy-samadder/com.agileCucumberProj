@@ -25,8 +25,19 @@ public class DriverFactory {
     }
 	
 	
-	
-	
+
+    public static void safeQuit() {
+        try {
+            if (driver != null) {
+                driver.quit();
+                driver = null; // Reset for next test run
+            }
+        } catch (Exception e) {
+            System.out.println("Driver quit failed: " + e.getMessage());
+        }
+    }
+
+
 	
 	
 	

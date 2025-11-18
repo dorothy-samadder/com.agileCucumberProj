@@ -3,16 +3,16 @@ Feature: Logintest
 
   Background:
     Given I am on Home page
-
-  @smoke
-  Scenario: valid Scenario
-    When I insert valid email
+    When I click on Sign In link.
+    Then I navigate to Sign in page.
+@smoke
+  Scenario: Create Profile
+    And I insert valid email
     And I inset valid password
     When I click on login button
     Then I should be navigated to the Login page.
 # data provider setup for email and password
-
-  @smoke
+@smoke
   Scenario Outline:
     When I insert valid '<email>'
     And I inset valid '<password>'

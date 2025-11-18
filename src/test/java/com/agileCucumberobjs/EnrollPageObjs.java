@@ -10,8 +10,9 @@ import org.openqa.selenium.support.ui.Select;
 import Stepdefs.BasePage;
 
 public class EnrollPageObjs extends BasePage{
-
 	
+
+	private static By FormTitleby= By.xpath("//h2[text()='Course Enrollment Form']");
 	private static By InsertFirstNameby = (By.xpath("//input[@id='first_name']"));
 	private static By InsertLastNameby = (By.xpath("//input[@id='last_name']"));
 	private static By InsertPhoneby = (By.xpath("//input[@id='phone']"));
@@ -25,6 +26,7 @@ public class EnrollPageObjs extends BasePage{
 	private static By InsertConPaswordby = (By.xpath("//input[@id='confirm_password']\r\n"));
 	private static By InsertCourseby = (By.xpath("//select[@id='role']\r\n"));
 	private static By termsCheckboxby = (By.id("t&c"));
+	private static By EnroolButtonby= By.xpath("//button[@class='btn btn-primary' and text()='Enroll Now']");
 	
 	public EnrollPageObjs(WebDriver driver) {
         super(driver);
@@ -32,6 +34,11 @@ public class EnrollPageObjs extends BasePage{
 	
 	
 	//Insertdata methode from baseobject class
+	
+	public WebElement formTitle() {
+		return driver.findElement(FormTitleby);
+	
+	}
 
 	public void FirstName() {
 		WebElement FirstName = driver.findElement(InsertFirstNameby);// use locator
@@ -84,10 +91,10 @@ public class EnrollPageObjs extends BasePage{
 		selectDropdown(County(), 3);
 	}
 	
-	public void Course() {
+	public WebElement Course() {
 		WebElement course = driver.findElement(InsertCourseby);// use this select methode to use dropdown
-		Select sel = new Select(course);
-		sel.selectByIndex(3);
+		return course;
+		
 	}
 
 
@@ -123,8 +130,8 @@ public class EnrollPageObjs extends BasePage{
 		}
 	}
 
-	public void Closeall() {
-		driver.close();
+	public WebElement EnrollNow(){
+		return driver.findElement(EnroolButtonby);
 	}
 
 }

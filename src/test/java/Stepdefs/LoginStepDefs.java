@@ -14,33 +14,46 @@ import utils.DriverFactory;
 
 public class LoginStepDefs {
 
-	private SignupPageObjs signin;
+	
 	private HomePageObjs home;
+	private SignupPageObjs signin;
 
 	public LoginStepDefs() {
 		WebDriver driver = DriverFactory.getDriver();
-		signin = new SignupPageObjs(driver);
-		home = new HomePageObjs(driver);
+		home= new HomePageObjs(driver);
+		signin =new SignupPageObjs(driver);
+		
 	}
 
 	// HomePageObjs home= new HomePageObjs(driver);
 	// SignupPageObjs signin =new SignupPageObjs(driver);
+	
 
-	@Given("I am on Home page")
-	public void i_am_on_Home_page() {
-		home.PrintTitleofPage();
-		home.clickSignin();
+	 @Given("I am on Home page") public void i_am_on_Home_page() {
+	 home.PrintTitleofPage();
+	 
+	 }
+	
+	
+	@When("I click on Sign In link.")
+	public void i_click_on_sign_in_link() {
+	home.waitClick(home.SignIn());
+	//home.clickSignin();
+	}  
 
+	@Then("I navigate to Sign in page.")
+	public void i_navigate_to_sign_in_page() {
+	    signin.PrintTitleofPage();
 	}
-
 	@When("I insert valid email")
 	public void i_insert_valid_email() {
+		
 
 	}
 
 	@When("I inset valid password")
 	public void i_inset_valid_password() {
-
+		
 	}
 
 	@When("I insert valid {string}")
