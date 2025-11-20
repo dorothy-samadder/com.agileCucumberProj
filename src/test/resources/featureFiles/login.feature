@@ -12,8 +12,10 @@ Feature: Logintest
     When I click on login button
     Then I should be navigated to the Login page.
 # data provider setup for email and password
+
+
 @smoke
-  Scenario Outline:
+  Scenario Outline: Login
     When I insert valid '<email>'
     And I inset valid '<password>'
     When I click on login button
@@ -24,3 +26,5 @@ Feature: Logintest
       | abc@gmail.com | uuu77777 |
       | ghn@aol.com   | yyyy4444 |
       | jhk@yahoo.com | ttti6666 |
+
+      

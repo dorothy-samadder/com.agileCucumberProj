@@ -3,7 +3,7 @@ package Stepdefs;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(features = { "src/test/resources/featureFiles/enroll.feature",
+@CucumberOptions(features =  {"src/test/resources/featureFiles/enroll.feature",
 		"src/test/resources/featureFiles/login.feature" },
 
 // path to your .feature files

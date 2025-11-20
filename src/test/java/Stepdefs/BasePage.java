@@ -1,5 +1,6 @@
 package Stepdefs;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,22 +16,15 @@ public abstract class BasePage {
 
 	public BasePage(WebDriver driver) {
 		this.driver = driver;
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 	}
 
-	// ✅ Utility: Click with wait
+	
 	public void waitClick(WebElement element) {
 		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 	}
 
-	// ✅ Utility: Insert text
-	public void insertData(WebElement element, String text) {
-		wait.until(ExpectedConditions.visibilityOf(element));
-		element.clear();
-		element.sendKeys(text);
-	}
 
-	// ✅ Utility: Get page title
 	public String getPageTitle() {
 		return driver.getTitle();
 
@@ -47,6 +41,12 @@ public abstract class BasePage {
 		PrintTitleofPage();
 
 	}
+	
+	public void insertData(WebElement element, String text) {
+		wait.until(ExpectedConditions.visibilityOf(element));
+		element.clear();
+		element.sendKeys(text);
+	}
 
 	
 	// ✅ Utility: Check element visibility
@@ -62,20 +62,24 @@ public abstract class BasePage {
 		e.clear();
 	}
 
-	public static void selectCheckbox(WebElement f) {
-		if (!f.isSelected()) {
-			f.click();
-		}
-	}
+	
 
 	public static void selectDropdown(WebElement e, int index) {
 		Select sel = new Select(e);
 		sel.selectByIndex(index);
 	}
 
-	public static void SelectCheckbox(WebElement f) {
+	public void SelectCheckbox(WebElement f) {
+		wait.until(ExpectedConditions.elementToBeClickable(f));
 		if (!f.isSelected()) {
 			f.click();
 		}
 	}
+	public void waitAndClick(WebDriver driver, WebElement element) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		wait.until(ExpectedConditions.elementToBeClickable(element));
+		element.click();
+	}
+	
 }
